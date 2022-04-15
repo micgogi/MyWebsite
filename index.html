@@ -48,9 +48,10 @@
     />
 
     <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js" charset="utf-8"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-    <script src="/js/calendar-heatmap.js"></script>
+    <script src="/js/calendar-heatmap.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="src/calendar-heatmap.css">
     <link
       rel="stylesheet"
       href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
@@ -918,68 +919,17 @@
       </div>
     </section>
 
-    <!-- <section id="featured" class="home-section wg-featured">
+    <section id="featured" class="home-section wg-featured">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-4 section-heading">
             <h1>Leetcode Activity</h1>
           </div>
           <div class="col-12 col-lg-8">
-            <script >
-              var now = moment().endOf('day').toDate();
-              var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
-              var chartData = d3.timeDays(yearAgo, now).map(function (dateElement) {
-                return {
-                  date: dateElement,
-                  count: (dateElement.getDay() !== 0 && dateElement.getDay() !== 6) ? Math.floor(Math.random() * 60) : Math.floor(Math.random() * 10)
-                };
-              });
-          
-             var chartData1 = { submissionCalendar: "{\"1641254400\": 3, \"1641427200\": 4, \"1641772800\": 5, \"1641859200\": 2, \"1641945600\": 2, \"1617494400\": 6, \"1617580800\": 3, \"1617667200\": 1, \"1617753600\": 2, \"1617840000\": 1, \"1617926400\": 2, \"1618012800\": 3, \"1618099200\": 2, \"1618272000\": 3, \"1618358400\": 2, \"1618444800\": 2, \"1618617600\": 5, \"1618704000\": 1, \"1618790400\": 1, \"1618876800\": 1, \"1619049600\": 1, \"1619136000\": 2, \"1619222400\": 4, \"1619308800\": 1, \"1619481600\": 6, \"1619654400\": 2, \"1619740800\": 3, \"1619913600\": 6, \"1620000000\": 1, \"1620086400\": 3, \"1620172800\": 1, \"1620259200\": 1, \"1620345600\": 1, \"1620432000\": 2, \"1620518400\": 2, \"1620604800\": 2, \"1620777600\": 2, \"1620950400\": 1, \"1621036800\": 6, \"1621123200\": 2, \"1621209600\": 1, \"1622160000\": 1, \"1622246400\": 1, \"1622332800\": 3, \"1622419200\": 2, \"1622505600\": 2, \"1623024000\": 2, \"1623110400\": 1, \"1623456000\": 1, \"1623542400\": 3, \"1623628800\": 3, \"1623715200\": 1, \"1623801600\": 3, \"1623888000\": 2, \"1623974400\": 3, \"1624060800\": 1, \"1624147200\": 1, \"1624233600\": 1, \"1624320000\": 6, \"1624406400\": 4, \"1624579200\": 5, \"1624665600\": 1, \"1624752000\": 1, \"1624838400\": 1, \"1624924800\": 1, \"1625011200\": 2, \"1625097600\": 2, \"1625184000\": 1, \"1625270400\": 4, \"1625356800\": 13, \"1625443200\": 4, \"1625529600\": 1, \"1625616000\": 2, \"1625702400\": 2, \"1625788800\": 3, \"1625875200\": 3, \"1625961600\": 3, \"1626048000\": 1, \"1626134400\": 4, \"1626220800\": 2, \"1626393600\": 3, \"1626652800\": 2, \"1626739200\": 4, \"1626998400\": 3, \"1627257600\": 1, \"1627344000\": 1, \"1627948800\": 1, \"1628035200\": 1, \"1628121600\": 1, \"1628208000\": 1, \"1628467200\": 1, \"1628553600\": 2, \"1628640000\": 2, \"1628726400\": 1, \"1628812800\": 2, \"1628985600\": 3, \"1629072000\": 1, \"1629331200\": 13, \"1629417600\": 2, \"1630540800\": 2, \"1631923200\": 1, \"1633132800\": 4, \"1634860800\": 2, \"1635292800\": 3, \"1635379200\": 6, \"1635465600\": 3, \"1635552000\": 1, \"1635724800\": 3, \"1635897600\": 1, \"1636329600\": 2, \"1636416000\": 2, \"1636502400\": 13, \"1636588800\": 9, \"1636675200\": 7, \"1637193600\": 3, \"1637280000\": 1, \"1637366400\": 9, \"1637452800\": 13, \"1637539200\": 4, \"1637625600\": 24, \"1637712000\": 7, \"1637798400\": 5, \"1637884800\": 3, \"1637971200\": 7, \"1638057600\": 1, \"1638230400\": 3, \"1638489600\": 4, \"1639008000\": 1, \"1639094400\": 2}" }
-              console.log(chartData1);
-              var chartData2 = [];
-              var data = JSON.parse(chartData1.submissionCalendar);
-              Object.keys(data).forEach(e => {
-                chartData2.push({
-
-                  date: new Date(parseInt(e) * 1000),
-                  count: data[e]
-                });chartData2
-              });
-              console.log();
-            let headers = new Headers();
-          
-          //   headers.append('Content-Type', 'application/json');
-          //   headers.append('Accept', 'application/json');
-          //   headers.append('Access-Control-Allow-Origin', '*');
-          // headers.append('Access-Control-Allow-Methods','GET, POST, PATCH, PUT, DELETE, OPTIONS');
-          // headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token');
-          
-          
-          //   fetch("https://s3.ap-south-1.amazonaws.com/rahulgogyani.com/leetcodedata.json", {
-          //     method: 'GET',
-          //     headers: headers,
-              
-          //   })
-          // .then(res =>console.log(res))
-          
-             
-               // getChartData();
-              var heatmap = calendarHeatmap()
-                .data(chartData2)
-                .selector('.container')
-                .tooltipEnabled(true)
-                .legendEnabled(true)
-                .colorRange(['#ffffff', '#ff0000'])
-                .onClick(function (data) {
-                  console.log('data', data);
-                });
-          
-              heatmap();  // render the chart
-            </script>
+            <iframe src="_v4.html" frameborder="0" width="100%" height="300"></iframe>
         </div>
       </div>
-    </section> -->
+    </section>
 
 
     <section id="featured" class="home-section wg-featured">
