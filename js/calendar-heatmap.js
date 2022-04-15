@@ -33,7 +33,6 @@ function calendarHeatmap() {
   // setters and getters
   chart.data = function (value) {
     if (!arguments.length) { return data; }
-    console.log('data', value);
     data = value
 
     counterMap= {};
