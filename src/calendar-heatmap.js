@@ -87,7 +87,7 @@ function calendarHeatmap() {
   chart.legendEnabled = function (value) {
     
     if (!arguments.length) { return legendEnabled; }
-    console.log(value);
+  //  console.log(value);
     legendEnabled = value;
     return chart;
   };
@@ -99,8 +99,8 @@ function calendarHeatmap() {
   };
 
   chart.locale = function (value) {
-    console.log("locale");
-    console.log(value)
+    // console.log("locale");
+    // console.log(value)
     if (!arguments.length) { return locale; }
     locale = value;
     return chart;
@@ -179,7 +179,7 @@ function calendarHeatmap() {
       }
 
       if (chart.legendEnabled()) {
-        console.log("legendEnabled");
+        // console.log("legendEnabled");
         var colorRange = [color(0)];
         for (var i = 3; i > 0; i--) {
           colorRange.push(color(max / i));
