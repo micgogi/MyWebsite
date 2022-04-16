@@ -70,11 +70,9 @@
       .data(chartData2)
       .selector('.container')
       .tooltipEnabled(true)
-      .legendEnabled(true)
-      .colorRange(['#ffffff', '#ff0000'])
-      .onClick(function (data) {
-        console.log('data', data);
-      });
+      .legendEnabled(false)
+      .colorRange(['#dddbdb', '#ff0000'])
+
 
     heatmap();  // render the chart
   </script>
