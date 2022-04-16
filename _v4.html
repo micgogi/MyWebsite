@@ -43,18 +43,18 @@
         .then(function (myJson) {
           const data =  myJson;
           console.log('data', data);
-          let chartData2=[];
-          Object.keys(data).forEach(e => {
-            chartData2.push({
+          // let chartData2=[];
+          // Object.keys(data).forEach(e => {
+          //   chartData2.push({
 
-              date: new Date(parseInt(e) * 1000),
-              count: data[e]
-            });
-          });
-          console.log(chartData2);
+          //     date: new Date(parseInt(e) * 1000),
+          //     count: data[e]
+          //   });
+          // });
+         // console.log(chartData2);
 
           var heatmap = calendarHeatmap()
-            .data(chartData2)
+            .data(data)
             .selector('.container')
             .tooltipEnabled(true)
             .legendEnabled(false)
