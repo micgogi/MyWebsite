@@ -7,7 +7,7 @@ function calendarHeatmap() {
   var selector = 'body';
   var SQUARE_LENGTH = 11;
   var SQUARE_PADDING = 2;
-  var MONTH_LABEL_PADDING = 6;
+  var MONTH_LABEL_PADDING = 0;
   var now = moment().endOf('day').toDate();
   var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
   var startDate = null;
@@ -136,7 +136,7 @@ function calendarHeatmap() {
         .attr('width', width)
         .attr('class', 'calendar-heatmap')
         .attr('height', height)
-        .style('padding', '36px');
+        .style('padding', '10px');
 
       dayRects = svg.selectAll('.day-cell')
         .data(dateRange);  //  array of days for the last yr
