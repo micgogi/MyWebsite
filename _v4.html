@@ -44,7 +44,7 @@
           const data =  myJson;
           console.log('data', data);
           let chartData2=[];
-          Object.keys(data.submissionCalendar).forEach(e => {
+          Object.keys(data).forEach(e => {
             chartData2.push({
 
               date: new Date(parseInt(e) * 1000),
