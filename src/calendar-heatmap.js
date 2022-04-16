@@ -7,7 +7,7 @@ function calendarHeatmap() {
   var selector = 'body';
   var SQUARE_LENGTH = 11;
   var SQUARE_PADDING = 2;
-  var MONTH_LABEL_PADDING = 0;
+  var MONTH_LABEL_PADDING = 6;
   var now = moment().endOf('day').toDate();
   var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
   var startDate = null;
