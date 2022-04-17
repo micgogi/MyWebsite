@@ -1,7 +1,7 @@
 
 function calendarHeatmap() {
   // defaults
-  var width = 750;
+  var width = '100%';
   var height =100;
   var legendWidth = 0;
   var selector = 'body';
@@ -135,19 +135,39 @@ function calendarHeatmap() {
         .append('svg')
         .attr('width', width)
         .attr('class', 'calendar-heatmap')
-        .attr('height', height)
+        .attr('viewBox', '0 0 ' + '717' + ' ' + '112')
+        // /.attr('height', height)
         .style('padding', '5px');
 
       dayRects = svg.selectAll('.day-cell')
         .data(dateRange);  //  array of days for the last yr
+
+
+        var monthLabels = svg.selectAll('.month')
+        .data(monthRange)
+        .enter().append('text')
+        .attr('class', 'month-name')
+        .text(function (d) {
+          return locale.months[d.getMonth()];
+        })
+        .attr('x', function (d, i) {
+          var matchIndex = 0;
+          dateRange.find(function (element, index) {
+            matchIndex = index;
+            return moment(d).isSame(element, 'month') && moment(d).isSame(element, 'year');
+          });
+
+          return Math.floor(matchIndex / 7) * (SQUARE_LENGTH + SQUARE_PADDING);
+        })
+        .attr('y', 0);  // fix these to the top
 
       var enterSelection = dayRects.enter().append('rect')
         .attr('class', 'day-cell')
         .attr('width', SQUARE_LENGTH)
         .attr('height', SQUARE_LENGTH)
         .attr('fill', function(d) { 
-          console.log(d);
-          console.log(countForDate(d));
+          // console.log(d);
+          // console.log(countForDate(d));
           if(countForDate(d)===0){return 'rgb(221,219,219)';}
         return color(countForDate(d)); 
       })
@@ -216,24 +236,7 @@ function calendarHeatmap() {
       }
 
       dayRects.exit().remove();
-      var monthLabels = svg.selectAll('.month')
-          .data(monthRange)
-          .enter().append('text')
-          .attr('class', 'month-name')
-          .text(function (d) {
-            return locale.months[d.getMonth()];
-          })
-          .attr('x', function (d, i) {
-            var matchIndex = 0;
-            dateRange.find(function (element, index) {
-              matchIndex = index;
-              return moment(d).isSame(element, 'month') && moment(d).isSame(element, 'year');
-            });
-
-            return Math.floor(matchIndex / 7) * (SQUARE_LENGTH + SQUARE_PADDING);
-          })
-          .attr('y', 0);  // fix these to the top
-
+    
       locale.days.forEach(function (day, index) {
         index = formatWeekday(index);
         if (index % 2) {
@@ -285,7 +288,7 @@ function calendarHeatmap() {
     }
 
     var daysOfChart = chart.data().map(function (day) {
-      console.log(day);
+      // console.log(day);
       return day.date;
     });
 
