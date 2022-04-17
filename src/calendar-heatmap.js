@@ -285,6 +285,7 @@ function calendarHeatmap() {
     }
 
     var daysOfChart = chart.data().map(function (day) {
+      console.log(day);
       return day.date.toDateString();
     });
 
