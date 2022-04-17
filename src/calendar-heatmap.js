@@ -159,7 +159,7 @@ function calendarHeatmap() {
 
           return Math.floor(matchIndex / 7) * (SQUARE_LENGTH + SQUARE_PADDING);
         })
-        .attr('y', 0);  // fix these to the top
+        .attr('y', 100);  // fix these to the top
 
       var enterSelection = dayRects.enter().append('rect')
         .attr('class', 'day-cell')
