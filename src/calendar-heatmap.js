@@ -137,7 +137,7 @@ function calendarHeatmap() {
         .attr('class', 'calendar-heatmap')
         .attr('viewBox', '0 0 ' + '717' + ' ' + '112')
         // /.attr('height', height)
-        .style('padding', '5px');
+       // .style('padding', '5px');
 
       dayRects = svg.selectAll('.day-cell')
         .data(dateRange);  //  array of days for the last yr
