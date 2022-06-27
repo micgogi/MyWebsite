@@ -31,3 +31,6 @@ jobs:
           aws-region: ${{secrets.AWS_REGION}}
       - name: Deploy static site to S3 bucket
         run: aws s3 sync . s3://${{secrets.AWS_BUCKET_NAME}} --delete --exclude ".git/*" --exclude ".github/*"  --exclude "files/*" --exclude "leetcodedata/*"
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
